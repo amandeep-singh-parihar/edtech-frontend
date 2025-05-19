@@ -2,17 +2,11 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // AUTH ENDPOINTS
 export const authEndpoints = {
-	SENDOTP_API: BASE_URL + '/auth/sendOtp',
+	SENDOTP_API: BASE_URL + '/auth/sendotp',
 	SIGNUP_API: BASE_URL + '/auth/signup',
 	LOGIN_API: BASE_URL + '/auth/login',
-	CHANGEPASSWORD_API: BASE_URL + '/auth/changePassword',
-};
-
-// CATEGORIES ENDPOINTS
-export const categoriesEndpoints = {
-	CREATE_CATEGORIES_API: BASE_URL + '/course/createCategory',
-	SHOW_CATEGORIES_API: BASE_URL + '/course/showAllcategories',
-	CATEGORY_PAGE_DETAILS_API: BASE_URL + '/course/categoryPageDetails',
+	RESET_PASSWORD_TOKEN_API: BASE_URL + '/auth/reset-password-token',
+	RESET_PASSWORD_API: BASE_URL + '/auth/reset-password',
 };
 
 // COURSE ENDPOINTS
@@ -22,13 +16,23 @@ export const courseEndpoints = {
 	GET_COURSE_DETAILS: BASE_URL + '/course/getCourseDetails',
 	EDIT_COURSE_API: BASE_URL + '/course/editCourse',
 	GET_FULL_COURSE_DETAILS_API: BASE_URL + '/course/getFullCourseDetails',
-	GET_INSTRUCTOR_COURSES_API: BASE_URL + '/course/getInstructorCourses',
+	GET_ALL_INSTRUCTOR_COURSES_API: BASE_URL + '/course/getInstructorCourses',
 	DELETE_COURSE_API: BASE_URL + '/course/deleteCourse',
-};
-
-// COURSE PROGRESS ENDPOINTS
-export const courseProgressEndpoints = {
+	CREATE_CATEGORIES_API: BASE_URL + '/course/createCategory',
+	SHOW_CATEGORIES_API: BASE_URL + '/course/showAllcategories',
+	CATEGORY_PAGE_DETAILS_API: BASE_URL + '/course/categoryPageDetails',
 	UPDATE_COURSE_PROGRESS: BASE_URL + '/course/updateCourseProgress',
+	CREATE_RATING_API: BASE_URL + '/course/createRating',
+	GET_AVERAGE_RATING_API: BASE_URL + '/course/getAverageRating',
+	GET_ALL_RATING_API: BASE_URL + '/course/getAllRating',
+	GET_RATING_AND_REVIEWS_BY_ID_API:
+		BASE_URL + '/course/getRatingAndReviewsById',
+	CREATE_SECTION_API: BASE_URL + '/course/createSection',
+	UPDATE_SECTION_API: BASE_URL + '/course/updateSection',
+	DELETE_SECTION_API: BASE_URL + '/course/deleteSection',
+	CREATE_SUBSECTION_API: BASE_URL + '/course/createSubsection',
+	UPDATE_SUBSECTION_API: BASE_URL + '/course/updateSubsection',
+	DELETE_SUBSECTION_API: BASE_URL + '/course/deleteSubsection',
 };
 
 // PAYMENT ENDPOINTS
@@ -40,39 +44,20 @@ export const paymentEndpoints = {
 
 // PROFILE ENDPOINTS
 export const profileEndpoints = {
-	UPDATE_PROFILE_API: BASE_URL + '/profile/updateProfile',
-	DELETE_ACCOUNT_API: BASE_URL + '/profile/deleteAccount',
 	GET_ALL_USER_DETAILS_API: BASE_URL + '/profile/getAllUserDetails',
+	GET_USER_ENROLLED_COURSES_API: BASE_URL + '/profile/getEnrolledCourses',
+	GET_INSTRUCTOR_DATA_API: BASE_URL + '/profile/instructorDashboard',
+};
+
+// CONTACTUS ENDPOINTS
+export const contactUsEndpoints = {
+	CONTACT_US_API: BASE_URL + '/contact',
+};
+
+// SETTINGS PAGE API
+export const settingsEndpoints = {
 	UPDATE_DISPLAY_PICTURE_API: BASE_URL + '/profile/updateDisplayPicture',
-	GET_ENROLLED_COURSES_API: BASE_URL + '/profile/getEnrolledCourses',
-	INSTRUCTOR_DASHBOARD_API: BASE_URL + '/profile/instructorDashboard',
-};
-
-// RATING AND REVIEW ENDPOINTS
-export const ratingAndReviewEntpoints = {
-	CREATE_RATING_API: BASE_URL + '/course/createRating',
-	GET_AVERAGE_RATING_API: BASE_URL + '/course/getAverageRating',
-	GET_ALL_RATING_API: BASE_URL + '/course/getAllRating',
-	GET_RATING_AND_REVIEWS_BY_ID_API:
-		BASE_URL + '/course/getRatingAndReviewsById',
-};
-
-// RESET PASSWORD ENDPOINTS
-export const resetPasswordEndpoints = {
-	RESET_PASSWORD_TOKEN_API: BASE_URL + '/auth/resetPasswordToken',
-	RESET_PASSWORD_API: BASE_URL + '/auth/resetPassword',
-};
-
-// SECTION ENDPOINTS
-export const sectionEndpoints = {
-	CREATE_SECTION_API: BASE_URL + '/course/createSection',
-	UPDATE_SECTION_API: BASE_URL + '/course/updateSection',
-	DELETE_SECTION_API: BASE_URL + '/course/deleteSection',
-};
-
-// SUBSECTION ENDPOINTS
-export const subSectionEndpoints = {
-	CREATE_SUBSECTION_API: BASE_URL + '/course/createSubsection',
-	UPDATE_SUBSECTION_API: BASE_URL + '/course/updateSubsection',
-	DELETE_SUBSECTION_API: BASE_URL + '/course/deleteSubsection',
+	UPDATE_PROFILE_API: BASE_URL + '/profile/updateProfile',
+	CHANGE_PASSWORD_API: BASE_URL + '/auth/changepassword',
+	DELETE_PROFILE_API: BASE_URL + '/profile/deleteProfile',
 };

@@ -6,9 +6,10 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import ProfileDropDown from '../core/Auth/ProfileDropDown.jsx';
-import { categoriesEndpoints } from '../../services/apis.js';
+import { courseEndpoints } from '../../services/apis.js';
 import { apiConnector } from '../../services/apiconnector.js';
 import { FaChevronDown } from 'react-icons/fa';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 function Navbar() {
 	const { token } = useSelector((state) => state.auth);
@@ -28,9 +29,9 @@ function Navbar() {
 		try {
 			const result = await apiConnector(
 				'GET',
-				categoriesEndpoints.SHOW_CATEGORIES_API,
+				courseEndpoints.SHOW_CATEGORIES_API,
 			);
-			console.log('printing sublinks : ', result);
+			// console.log('printing sublinks : ', result);
 			setSubLinks(result.data.data);
 		} catch (error) {
 			console.log('Could not fetch the category list');
@@ -130,6 +131,10 @@ function Navbar() {
 						</Link>
 					)}
 					{token !== null && <ProfileDropDown></ProfileDropDown>}
+				</div>
+
+				<div className="mr-4 md:hidden text-[#AFB2BF] scale-150">
+					<RxHamburgerMenu />
 				</div>
 			</div>
 		</div>
