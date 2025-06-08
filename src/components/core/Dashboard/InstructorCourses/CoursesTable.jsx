@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Tbody, Td, Th, Thead, Tr } from 'react-super-responsive-table';
 
-import { setCourse, setEditCourse } from '../../../../slices/courseSlice';
+import { setCourse, setEditCourse } from '../../../../slices/courseSlice.js';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
@@ -10,14 +10,14 @@ import { FiEdit2 } from 'react-icons/fi';
 import { HiClock } from 'react-icons/hi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
-import convertSecondsToDuration from '../../../../utils/secToDurationFrontend';
-import { formatDate } from '../../../../services/formatDate';
+import convertSecondsToDuration from '../../../../utils/secToDurationFrontend.js';
+import { formatDate } from '../../../../services/formatDate.js';
 import {
 	deleteCourse,
 	fetchInstructorCourses,
-} from '../../../../services/operations/courseDetailsAPI';
-import { COURSE_STATUS } from '../../../../utils/constants';
-import ConfirmationModal from '../../../common/ConfirmationModal';
+} from '../../../../services/operations/courseDetailsAPI.js';
+import { COURSE_STATUS } from '../../../../utils/constants.js';
+import ConfirmationModal from '../../../common/ConfirmationModal.jsx';
 
 const CoursesTable = ({ courses, setCourses }) => {
 	const dispatch = useDispatch();
@@ -31,7 +31,9 @@ const CoursesTable = ({ courses, setCourses }) => {
 		setLoading(true);
 		await deleteCourse({ courseId: courseId }, token);
 		const result = await fetchInstructorCourses(token);
-		// console.log("Incourse table result is", result)
+		//
+		// console.log("Incourse table result is---------->", result)
+		//
 		if (result) {
 			setCourses(result);
 		}
@@ -41,6 +43,7 @@ const CoursesTable = ({ courses, setCourses }) => {
 
 	function getDuration(course) {
 		let totalDurationInSeconds = 0;
+		console.log('---------------------> ', course);
 		course.courseContent.forEach((content) => {
 			content.subSection.forEach((subSection) => {
 				const timeDurationInSeconds = parseInt(subSection.timeDuration);
@@ -94,14 +97,15 @@ const CoursesTable = ({ courses, setCourses }) => {
 										<p className="text-lg font-semibold text-richblack-5">
 											{course.courseName}
 										</p>
-										<p className="text-xs text-richblack-300">
-											{course.description.split(' ').length > TRUNCATE_LENGTH
+										<div className="text-xs text-richblack-300">
+											{course.courseDescription.split(' ').length >
+											TRUNCATE_LENGTH
 												? course.courseDescription
 														.split(' ')
 														.slice(0, TRUNCATE_LENGTH)
 														.join(' ') + '...'
 												: course.courseDescription}
-										</p>
+										</div>
 										<p className="text-[12px] text-white">
 											Created: {formatDate(course.createdAt)}
 										</p>
@@ -111,12 +115,12 @@ const CoursesTable = ({ courses, setCourses }) => {
 												Drafted
 											</p>
 										) : (
-											<p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+											<div className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
 												<div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
 													<FaCheck size={8} />
 												</div>
 												Published
-											</p>
+											</div>
 										)}
 									</div>
 								</Td>
@@ -130,7 +134,7 @@ const CoursesTable = ({ courses, setCourses }) => {
 									<button
 										disabled={loading}
 										onClick={() => {
-											navigate(`/dashboard/edit-course/${course._id}`);
+											navigate(`/dashboard/editCourse/${course._id}`);
 										}}
 										title="Edit"
 										className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
@@ -168,6 +172,12 @@ const CoursesTable = ({ courses, setCourses }) => {
 			{confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
 		</>
 	);
+
+	// return (
+	// 	<div className='bg-white'>
+	// 		hello
+	// 	</div>
+	// )
 };
 
 export default CoursesTable;

@@ -50,32 +50,48 @@ export function updateProfile(token, formData) {
 			const response = await apiConnector('PUT', UPDATE_PROFILE_API, formData, {
 				Authorization: `Bearer ${token}`,
 			});
-			console.log('UPDATE_PROFILE_API API RESPONSE............', response);
+			console.log('UPDATE_PROFILE_API RESPONSE............', response);
 
 			if (!response.data.success) {
 				throw new Error(response.data.message);
 			}
-			const userImage = response.data.updatedUserDetails.image
-				? response.data.updatedUserDetails.image
-				: `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`;
-			dispatch(
-				setUser({ ...response.data.updatedUserDetails, image: userImage }),
+
+			const updatedUserDetails = response.data.data;
+
+			console.log('_____________________--->', updatedUserDetails);
+
+			const userImage = updatedUserDetails.image
+				? updatedUserDetails.image
+				: `https://api.dicebear.com/5.x/initials/svg?seed=${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`;
+
+			dispatch(setUser({ ...updatedUserDetails, image: userImage }));
+
+			localStorage.setItem(
+				'user',
+				JSON.stringify({ ...updatedUserDetails, image: userImage }),
 			);
+
 			toast.success('Profile Updated Successfully');
 		} catch (error) {
-			console.log('UPDATE_PROFILE_API API ERROR............', error);
+			console.log('UPDATE_PROFILE_API ERROR............', error);
 			toast.error('Could Not Update Profile');
 		}
 		toast.dismiss(toastId);
 	};
 }
 
-export async function changePassword(token, formData) {
+export async function changePassword(token, passwords) {
 	const toastId = toast.loading('Loading...');
 	try {
-		const response = await apiConnector('POST', CHANGE_PASSWORD_API, formData, {
-			Authorization: `Bearer ${token}`,
-		});
+		const response = await apiConnector(
+			'POST',
+			CHANGE_PASSWORD_API,
+			passwords,
+			{
+				Authorization: `Bearer ${token}`,
+			},
+		);
+		console.log('form data=====-> ', passwords);
 		console.log('CHANGE_PASSWORD_API API RESPONSE............', response);
 
 		if (!response.data.success) {

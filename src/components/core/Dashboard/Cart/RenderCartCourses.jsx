@@ -10,7 +10,7 @@ const RenderCartCourses = () => {
 	const dispatch = useDispatch();
 
 	const getRating = (course) => {
-		const count = GetAvgRating(course?.courseDetails.ratingAndReviews);
+		const count = GetAvgRating(course?.courseDetails.ratingAndreviews);
 		return count;
 	};
 
@@ -41,7 +41,7 @@ const RenderCartCourses = () => {
 								<span className="text-yellow-5">4.5</span>
 								<ReactStars
 									count={5}
-									value={course?.ratingAndReviews?.length}
+									value={course?.ratingAndreviews?.length}
 									size={20}
 									edit={false}
 									activeColor="#ffd700"
@@ -49,7 +49,7 @@ const RenderCartCourses = () => {
 									fullIcon={<FaStar />}
 								/>
 								<span className="text-richblack-400">
-									{course?.ratingAndReviews?.length} Ratings
+									{course?.ratingAndreviews?.length} Ratings
 								</span>
 							</div>
 						</div>

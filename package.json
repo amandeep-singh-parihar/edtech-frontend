@@ -17,6 +17,7 @@
 		"axios": "^1.9.0",
 		"chart.js": "^4.4.9",
 		"concurrently": "^9.1.2",
+		"copy-to-clipboard": "^3.3.3",
 		"framer-motion": "^12.9.1",
 		"prettier": "^3.5.3",
 		"react": "^18.3.1",
@@ -33,6 +34,7 @@
 		"react-router-dom": "^7.5.1",
 		"react-super-responsive-table": "^6.0.2",
 		"react-type-animation": "^3.2.0",
+		"swiper": "^11.2.7",
 		"video-react": "^0.16.0"
 	},
 	"devDependencies": {

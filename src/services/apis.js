@@ -26,13 +26,13 @@ export const courseEndpoints = {
 	GET_AVERAGE_RATING_API: BASE_URL + '/course/getAverageRating',
 	GET_ALL_RATING_API: BASE_URL + '/course/getAllRating',
 	GET_RATING_AND_REVIEWS_BY_ID_API:
-		BASE_URL + '/course/getRatingAndReviewsById',
+		BASE_URL + '/course/getRatingAndreviewsById',
 	CREATE_SECTION_API: BASE_URL + '/course/createSection',
 	UPDATE_SECTION_API: BASE_URL + '/course/updateSection',
 	DELETE_SECTION_API: BASE_URL + '/course/deleteSection',
-	CREATE_SUBSECTION_API: BASE_URL + '/course/createSubsection',
-	UPDATE_SUBSECTION_API: BASE_URL + '/course/updateSubsection',
-	DELETE_SUBSECTION_API: BASE_URL + '/course/deleteSubsection',
+	CREATE_SUBSECTION_API: BASE_URL + '/course/addSubSection',
+	UPDATE_SUBSECTION_API: BASE_URL + '/course/updateSubSection',
+	DELETE_SUBSECTION_API: BASE_URL + '/course/deleteSubSection',
 };
 
 // PAYMENT ENDPOINTS
@@ -49,6 +49,11 @@ export const profileEndpoints = {
 	GET_INSTRUCTOR_DATA_API: BASE_URL + '/profile/instructorDashboard',
 };
 
+// CATALOG PAGE DATA
+export const catalogData = {
+	CATALOGPAGEDATA_API: BASE_URL + '/course/getCategoryPageDetails',
+};
+
 // CONTACTUS ENDPOINTS
 export const contactUsEndpoints = {
 	CONTACT_US_API: BASE_URL + '/contact',
@@ -60,4 +65,9 @@ export const settingsEndpoints = {
 	UPDATE_PROFILE_API: BASE_URL + '/profile/updateProfile',
 	CHANGE_PASSWORD_API: BASE_URL + '/auth/changepassword',
 	DELETE_PROFILE_API: BASE_URL + '/profile/deleteProfile',
+};
+
+// CATAGORIES API
+export const categories = {
+	CATEGORIES_API: BASE_URL + '/course/showAllCategories',
 };

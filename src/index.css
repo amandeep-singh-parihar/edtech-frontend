@@ -7,9 +7,12 @@
 }
 
 html,
-body {
+body,
+#root {
 	margin: 0;
 	padding: 0;
+	min-height: 100%;
+	/* background-color: #000814; richblack-900 */
 	/* background-color: #001B22; */
 }
 

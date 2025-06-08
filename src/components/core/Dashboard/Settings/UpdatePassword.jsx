@@ -20,13 +20,19 @@ function UpdatePassword() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-
+	// In submitPasswordForm
 	const submitPasswordForm = async (data) => {
-		// console.log("password Data - ", data)
+		console.log('Frontend Data object from useForm:', data);
+		console.log('Frontend oldPassword:', data.oldPassword);
+		console.log('Frontend newPassword:', data.newPassword);
+
 		try {
-			await changePassword(token, data);
+			await changePassword(token, {
+				oldPassword: data.oldPassword,
+				newPassword: data.newPassword,
+			});
 		} catch (error) {
-			console.log('ERROR MESSAGE - ', error.message);
+			console.log('ERROR MESSAGE in component catch - ', error.message);
 		}
 	};
 
