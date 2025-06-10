@@ -56,9 +56,11 @@ export function updateProfile(token, formData) {
 				throw new Error(response.data.message);
 			}
 
-			const updatedUserDetails = response.data.data;
+			const updatedUserDetails = response.data.updatedUserDetails;
 
-			console.log('_____________________--->', updatedUserDetails);
+			// Debug
+			// console.log('_____________________--->', updatedUserDetails);
+			// Debug
 
 			const userImage = updatedUserDetails.image
 				? updatedUserDetails.image
@@ -91,7 +93,8 @@ export async function changePassword(token, passwords) {
 				Authorization: `Bearer ${token}`,
 			},
 		);
-		console.log('form data=====-> ', passwords);
+
+		// console.log('form data=====-> ', passwords);
 		console.log('CHANGE_PASSWORD_API API RESPONSE............', response);
 
 		if (!response.data.success) {

@@ -12,7 +12,7 @@ function RenderSteps() {
 
 	const { step } = useSelector((state) => state.course);
 
-	console.log('This the current step', step);
+	// console.log('This the current step', step);
 
 	const steps = [
 		{ id: 1, title: 'Course Information' },
