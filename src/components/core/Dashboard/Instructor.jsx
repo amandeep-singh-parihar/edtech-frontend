@@ -52,7 +52,7 @@ const Instructor = () => {
 				</p>
 			</div>
 			{loading ? (
-				<div className="spinner"></div>
+				<div className="spinner absolute top-[50%] left-[50%]"></div>
 			) : courses.length > 0 ? (
 				<div>
 					<div className="my-4 flex h-[450px] space-x-4">

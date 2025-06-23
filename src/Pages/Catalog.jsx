@@ -73,7 +73,7 @@ const Catalog = () => {
 	if (loading) {
 		return (
 			<div className=" h-screen flex justify-center items-center text-richblack-100 mx-auto  text-3xl">
-				<p>Loading...</p>
+				<div className="spinner"></div>
 			</div>
 		);
 	} else {
