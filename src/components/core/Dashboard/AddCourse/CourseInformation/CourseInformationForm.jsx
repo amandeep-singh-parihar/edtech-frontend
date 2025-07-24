@@ -170,6 +170,10 @@ const CourseInformationForm = () => {
 				return;
 			}
 
+			// Debug
+			// console.log("data->",data);
+			// Debug
+
 			const formData = new FormData();
 			formData.append('courseName', data.courseTitle);
 			formData.append('courseDescription', data.courseShortDesc);
@@ -183,9 +187,17 @@ const CourseInformationForm = () => {
 
 			setLoading(true);
 
+			// Debug
+
+			// for (let pair of formData.entries()) {
+			// 	console.log(pair[0] + ':', pair[1]);
+			// }
+
+			// Debug
+
 			const result = await addCourseDetails(formData, token);
 
-			console.log('Course API result:', result.data);
+			console.log('Course API result:', result);
 
 			// //
 			// const success = result ||  result?.success || result?.data?.success;
@@ -203,7 +215,7 @@ const CourseInformationForm = () => {
 			// 	toast.error('course creation failed')
 			// }
 
-			if (result) {
+			if (result?.success) {
 				console.log('Dispatching next step');
 				// DEbug
 				// console.log('Course API result:', result);
@@ -213,16 +225,17 @@ const CourseInformationForm = () => {
 				// Debug
 				// console.log('DISPATCHED setStep(2)');
 				// Debug
-				dispatch(setCourse(result));
-
+				dispatch(setCourse(result.data));
 				// Debug
 				// console.log('Going to step 2...');
 				// Debug
 			} else {
-				console.error('course creation failed');
+				toast.error('Course creation failed');
+				console.error('course creation failed', result);
 			}
 			setLoading(false);
 		} catch (error) {
+			toast.error('Course creation failed');
 			console.error('Error creating course:', error);
 		}
 	};

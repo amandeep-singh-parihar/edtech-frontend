@@ -56,20 +56,24 @@ export function updateProfile(token, formData) {
 				throw new Error(response.data.message);
 			}
 
-			const updatedUserDetails = response.data.updatedUserDetails;
+			const updatedUserDetails = response.data.data;
 
 			// Debug
-			// console.log('_____________________--->', updatedUserDetails);
+			// console.log('_____________________--->', response);
+			// console.log('_____________________--->', response.data);
+			// console.log('_____________________--->', response.data.updatedUserDetails);
 			// Debug
 
 			const userImage = updatedUserDetails.image
 				? updatedUserDetails.image
 				: `https://api.dicebear.com/5.x/initials/svg?seed=${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`;
 
+			// dispatch(setUser({ ...updatedUserDetails, image: userImage }));
 			dispatch(setUser({ ...updatedUserDetails, image: userImage }));
 
 			localStorage.setItem(
 				'user',
+				// JSON.stringify({ ...updatedUserDetails, image: userImage }),
 				JSON.stringify({ ...updatedUserDetails, image: userImage }),
 			);
 

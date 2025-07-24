@@ -41,12 +41,12 @@ const Catalog = () => {
 			try {
 				const res = await getCatalogaPageData(categoryId);
 				console.log('printing res: ', res);
-				if (res.success) {
+				if (res?.success && res?.data) {
 					// console.log('<><><><><><><><> ', res.success);
-					console.log('<><><><res.data><><><><> ', res.data);
+					// console.log('<><><><res.data><><><><> ', res.data);
 
 					setCatalogPageData(res.data);
-					console.log('catalogPageData is -> ', catalogPageData);
+					// console.log('catalogPageData is -> ', catalogPageData);
 				} else {
 					setCatalogPageData(null);
 				}
@@ -61,11 +61,11 @@ const Catalog = () => {
 	}, [categoryId]);
 
 	useEffect(() => {
-		console.log('catalogPageData is -> ------------------>', catalogPageData);
-		console.log(
-			'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',
-			catalogPageData?.selectedCategory?.courses,
-		);
+		// console.log('catalogPageData is -> ------------------>', catalogPageData);
+		// console.log(
+		// 	'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',
+		// 	catalogPageData?.selectedCategory?.courses,
+		// );
 		//   console.log("catalogPageData?.differentCourses.course.length", catalogPageData?.differentCourses.course.length)
 		//     console.log("catalogPageData?.mostSellingCourses.length ",catalogPageData?.mostSellingCourses.length)
 	}, [catalogPageData]);
@@ -143,12 +143,12 @@ const Catalog = () => {
 							{/* section2 */}
 							<div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent text-richblack-50">
 								<div className="section_heading text-3xl font-bold">
-									Checkout {catalogPageData?.differentCategory.name} Courses
+									Checkout {catalogPageData?.differentCategory?.name} Courses
 									Also
 								</div>
 								<div className="py-8">
 									<CourseSlider
-										Courses={catalogPageData?.differentCategory.courses}
+										Courses={catalogPageData?.differentCategory?.courses}
 									/>
 								</div>
 							</div>

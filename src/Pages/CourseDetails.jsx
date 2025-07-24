@@ -110,9 +110,7 @@ const CourseDetails = () => {
 	if (profileLoading || courseLoading) {
 		return (
 			<div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-				<div className="spinner"></div>{' '}
-				{/* Assuming you have a CSS spinner class */}
-				<div>Loading course details...</div>
+				<div className="spinner"></div> <div>Loading course details...</div>
 			</div>
 		);
 	}
@@ -129,7 +127,6 @@ const CourseDetails = () => {
 	}
 
 	// Safely destructure properties directly from 'courseData'
-	// This is the line that was causing the primary error
 	const {
 		_id: course_id,
 		courseName,
