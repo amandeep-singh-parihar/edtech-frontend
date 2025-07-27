@@ -75,14 +75,12 @@ const CourseDetailsCard = ({
 					</div>
 
 					{!course?.studentsEnrolled.includes(user?._id) && (
-						// <button onClick={handleAddToCart} className="blackButton">
-						// 	Add to Cart
-						// </button>
-						<div className="w-full">
-							<IconBtn customClasses="w-full flex items-center justify-center">
-								Add to Cart
-							</IconBtn>
-						</div>
+						<button
+							onClick={handleAddToCart}
+							className="cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 bg-yellow-50"
+						>
+							Add to Cart
+						</button>
 					)}
 				</div>
 

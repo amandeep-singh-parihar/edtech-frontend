@@ -202,7 +202,6 @@ const CourseDetails = () => {
 							<button className="yellowButton" onClick={handleBuyCourse}>
 								Buy Now
 							</button>
-							<button className="blackButton">Add to Cart</button>
 						</div>
 					</div>
 
